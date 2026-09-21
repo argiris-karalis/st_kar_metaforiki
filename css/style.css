@@ -509,6 +509,10 @@ nav .lang-switcher a:hover .flag-icon {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* Εγγύηση ότι τίποτα δεν προεξέχει */
 }
 
 .contact-info {
@@ -521,19 +525,28 @@ nav .lang-switcher a:hover .flag-icon {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word; /* Διορθώνει μεγάλες λέξεις/κείμενα */
+    word-break: break-word;
 }
 
 .info-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Ευθυγράμμιση πάνω για να φαίνεται όμορφο όταν σπάει το email */
     gap: 1rem;
     margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 100%;
 }
 
 .info-item i {
     font-size: 1.5rem;
     color: var(--primary);
     width: 30px;
+    flex-shrink: 0; /* Εμποδίζει το εικονίδιο από το να μικρύνει */
+    margin-top: 4px;
 }
 
 .social-links {
@@ -564,12 +577,19 @@ nav .lang-switcher a:hover .flag-icon {
     border-radius: var(--radius);
     overflow: hidden;
     min-height: 350px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-.map-container iframe {
-    width: 100%;
+.map-container iframe,
+.google-map {
+    width: 100% !important;  /* Παρακάμπτει το width="600" της HTML */
+    max-width: 100% !important;
     height: 100%;
+    min-height: 350px;
     border: 0;
+    display: block;
 }
 
 /* ==========================================
@@ -994,10 +1014,24 @@ footer.footer {
     margin-bottom: 2rem;
 }
 
+.info-item div {
+    min-width: 0; /* Σημαντικό flexbox fix για να λειτουργήσει το word-break */
+    flex: 1;
+}
+
+/* Διόρθωση για το Email και τα Links */
 .phone-link {
     color: var(--primary);
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 0.98rem;
+    display: inline-block;
+    max-width: 100%;
+    overflow-wrap: anywhere; /* Αναγκάζει το μεγάλο email να σπάσει ομαλά σε νέα γραμμή */
+    word-break: break-all;   /* Fallback για παλαιότερους πλοηγούς */
+}
+
+.map-container {
+    min-height: 280px;
 }
 
 .social-label {
@@ -1036,6 +1070,7 @@ footer.footer {
     .about-container, 
     .contact-container {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .floating-call-btn {
