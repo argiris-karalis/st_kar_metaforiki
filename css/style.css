@@ -11,7 +11,8 @@
 
     /* Background Colors */
     --bg-dark: #0f172a;
-    --bg-overlay: rgba(15, 23, 42, 0.75);
+    /* ΔΙΟΡΘΩΣΗ: Πιο σκούρο overlay για να είναι ευανάγνωστα τα κείμενα πάνω από τη φωτογραφία */
+    --bg-overlay: rgba(15, 23, 42, 0.88); 
     --bg-card: rgba(30, 41, 59, 0.75);
     --bg-header: #13170d;
     --bg-nav: rgba(15, 23, 42, 0.95);
@@ -24,7 +25,8 @@
 
     /* Text Colors */
     --text-main: #f8fafc;
-    --text-muted: #94a3b8;
+    /* ΔΙΟΡΘΩΣΗ: Πιο ανοιχτό γκρι για υψηλή αντίθεση σε σκοτεινό φόντο */
+    --text-muted: #cbd5e1; 
 
     /* Borders & Lines */
     --border-glass: 1px solid rgba(255, 255, 255, 0.1);
@@ -50,19 +52,19 @@
     scrollbar-width: thin;
 }
 
-    /* Fallback για Chrome / Edge / Safari */
-    ::-webkit-scrollbar {
+/* Fallback για Chrome / Edge / Safari */
+::-webkit-scrollbar {
     width: 8px;
-    }
+}
 
-    ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: var(--bg-dark);
-    }
+}
 
-    ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: var(--primary);
     border-radius: 4px;
-    }
+}
 
 * {
     margin: 0;
@@ -88,11 +90,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding-bottom: 60px; /* Για να μην κρύβεται περιεχόμενο από το sticky footer */
+    padding-bottom: 60px;
 }
 
 section {
-    padding: 6rem 2rem;
+    padding: 5rem 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
@@ -100,8 +102,8 @@ section {
 
 .section-title {
     text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 3rem;
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    margin-bottom: 2.5rem;
 }
 
 .section-title span { 
@@ -214,31 +216,31 @@ nav {
 /* Language Switcher */
 nav .lang-switcher,
 .nav-right-controls .lang-switcher {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 nav .lang-switcher a {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  padding: 0 !important;
-  display: inline-flex !important;
-  align-items: center;
-  cursor: pointer !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    cursor: pointer !important;
 }
 
 nav .lang-switcher .flag-icon {
-  width: 24px;
-  height: auto;
-  border-radius: 4px;
-  transition: opacity 0.3s ease, transform 0.2s ease;
+    width: 24px;
+    height: auto;
+    border-radius: 4px;
+    transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
 nav .lang-switcher a:hover .flag-icon {
-  opacity: 0.8;
-  transform: scale(1.08);
+    opacity: 0.8;
+    transform: scale(1.08);
 }
 
 /* ==========================================
@@ -251,14 +253,14 @@ nav .lang-switcher a:hover .flag-icon {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 8rem;
+    padding: 7rem 1.25rem 3rem 1.25rem;
     background: transparent;
 }
 
 .hero-logo {
-    width: 140px;
+    width: 130px;
     height: auto;
-    max-height: 140px;
+    max-height: 130px;
     object-fit: contain;
     margin-bottom: 1.5rem;
     border-radius: var(--radius);
@@ -272,17 +274,19 @@ nav .lang-switcher a:hover .flag-icon {
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2.1rem, 5vw, 3.5rem);
     font-weight: 800;
     margin-bottom: 1rem;
-    line-height: 1.2;
+    line-height: 1.25;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: clamp(0.98rem, 2.5vw, 1.2rem);
     color: var(--text-muted);
-    max-width: 600px;
+    max-width: 650px;
     margin-bottom: 2rem;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
 }
 
 .call-btn {
@@ -315,7 +319,7 @@ nav .lang-switcher a:hover .flag-icon {
     -webkit-backdrop-filter: var(--backdrop-blur);
     border: var(--border-glass);
     border-radius: var(--radius);
-    padding: 3rem;
+    padding: 2.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
@@ -386,7 +390,7 @@ nav .lang-switcher a:hover .flag-icon {
    ========================================== */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
 }
 
@@ -711,77 +715,7 @@ footer.footer {
 }
 
 /* ==========================================
-   13. RESPONSIVE DESIGN
-   ========================================== */
-@media (max-width: 1150px) {
-    .bento-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-container, 
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-
-    .hero h1 { 
-        font-size: 2.5rem; 
-    }
-
-    .floating-call-btn {
-        display: flex;
-    }
-
-    /* Mobile Navigation */
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 40%;
-        height: 80vh;
-        background: var(--bg-dark);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1.5rem;
-        transition: right 0.4s ease-in-out;
-    }
-
-    .nav-links.active {
-        right: 0;
-    }
-
-    .nav-links a {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .hero-logo {
-        width: 110px;
-        margin-bottom: 1rem;
-    }
-
-    .lightbox-content {
-        max-width: 95%;
-        max-height: 75vh;
-    }
-
-    .lightbox-btn {
-        font-size: 1.4rem;
-        padding: 0.6rem 0.9rem;
-    }
-
-    .lightbox-prev { left: 10px; }
-    .lightbox-next { right: 10px; }
-    .lightbox-close { top: 15px; right: 20px; font-size: 32px; }
-}
-
-/* ==========================================
-   PROCESS SECTION (4 ΒΗΜΑΤΑ)
+   13. PROCESS SECTION (4 ΒΗΜΑΤΑ)
    ========================================== */
 .process-grid {
     display: grid;
@@ -832,7 +766,7 @@ footer.footer {
 }
 
 /* ==========================================
-   SERVICE AREAS SECTION (ΠΕΡΙΟΧΕΣ)
+   14. SERVICE AREAS SECTION (ΠΕΡΙΟΧΕΣ)
    ========================================== */
 .areas-container {
     padding: 2.5rem;
@@ -877,7 +811,7 @@ footer.footer {
 }
 
 /* ==========================================
-   FAQ SECTION (ΣΥΧΝΕΣ ΕΡΩΤΗΣΕΙΣ)
+   15. FAQ SECTION (ΣΥΧΝΕΣ ΕΡΩΤΗΣΕΙΣ)
    ========================================== */
 .faq-container {
     display: flex;
@@ -934,7 +868,7 @@ footer.footer {
 }
 
 /* ==========================================
-   14. LEGAL / PRIVACY PAGE STYLES
+   16. LEGAL / PRIVACY PAGE STYLES
    ========================================== */
 .legal-container {
     max-width: 900px;
@@ -1027,33 +961,7 @@ footer.footer {
     font-weight: 600;
 }
 
-@media (max-width: 768px) {
-    .legal-container {
-        padding: 1.5rem;
-    }
-    .legal-container h1 {
-        font-size: 1.7rem;
-    }
-}
-
-@media (max-width: 1150px) {
-    /* Περιορισμός του ύψους του logo στο navbar */
-    nav .header-logo {
-        max-height: 35px;
-        width: auto;
-    }
-
-    /* Σωστή στοίχιση των στοιχείων στο nav */
-    nav {
-        padding: 0.8rem 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-}
-
-/* Νέες κλάσεις που αντικατέστησαν τα inline styles */
-
+/* Helper Utility Classes */
 .text-primary {
     color: var(--primary);
 }
@@ -1087,6 +995,111 @@ footer.footer {
     border: 0;
 }
 
-#pic{
+#pic {
     height: 400px;
+}
+
+/* ==========================================
+   17. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================== */
+@media (max-width: 1150px) {
+    nav {
+        padding: 0.8rem 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    nav .header-logo {
+        max-height: 35px;
+        width: auto;
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-container, 
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .floating-call-btn {
+        display: flex;
+    }
+
+    /* Mobile Navigation Drawer */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%; /* ΔΙΟΡΘΩΣΗ: 80% ώστε να χωράει άνετα σε κινητά */
+        max-width: 300px;
+        height: 100vh;
+        background: var(--bg-dark);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 4rem 1rem;
+    }
+
+    .about-container,
+    .contact-info,
+    .areas-container {
+        padding: 1.5rem;
+    }
+
+    .legal-container {
+        padding: 1.5rem;
+    }
+
+    .legal-container h1 {
+        font-size: 1.7rem;
+    }
+
+    #pic {
+        height: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-logo {
+        width: 100px;
+        max-height: 100px;
+        margin-bottom: 1rem;
+    }
+
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 75vh;
+    }
+
+    .lightbox-btn {
+        font-size: 1.4rem;
+        padding: 0.6rem 0.9rem;
+    }
+
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+    .lightbox-close { top: 15px; right: 20px; font-size: 32px; }
 }
