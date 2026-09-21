@@ -1153,3 +1153,17 @@ footer.footer {
     .lightbox-next { right: 10px; }
     .lightbox-close { top: 15px; right: 20px; font-size: 32px; }
 }
+
+/* Ειδική προσαρμογή μεγέθους για κινητά */
+@media (max-width: 768px) {
+    .phone-link {
+        font-size: 0.9rem; /* Μικραίνει ελαφρώς το μέγεθος για να χωράει ολόκληρο */
+    }
+}
+
+@media (max-width: 380px) {
+    /* Για πολύ μικρές οθόνες κινητών */
+    .phone-link {
+        font-size: 0.82rem;
+    }
+}
