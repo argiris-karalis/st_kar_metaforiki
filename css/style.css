@@ -1023,11 +1023,12 @@ footer.footer {
 .phone-link {
     color: var(--primary);
     text-decoration: none;
-    font-size: 0.98rem;
+    font-size: 1.1rem;
     display: inline-block;
     max-width: 100%;
-    overflow-wrap: anywhere; /* Αναγκάζει το μεγάλο email να σπάσει ομαλά σε νέα γραμμή */
-    word-break: break-all;   /* Fallback για παλαιότερους πλοηγούς */
+    /* Αλλαγή σε break-word για πιο ομαλό σπάσιμο */
+    overflow-wrap: break-word;
+    word-break: break-word; 
 }
 
 .map-container {
